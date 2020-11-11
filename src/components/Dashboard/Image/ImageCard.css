@@ -1,0 +1,14 @@
+.btn {
+  float: right;
+  padding: 0.2rem 0.5rem;
+}
+
+.btn:not(:first-child) {
+  margin-right: 10px;
+}
+
+.card-img-top {
+  max-height: 500px;
+  min-height: 150px;
+  object-fit: scale-down;
+}

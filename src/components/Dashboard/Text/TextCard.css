@@ -1,0 +1,8 @@
+.textAuthor > * {
+  font-size: small;
+  display: inline-block;
+}
+
+#textSection .card-footer {
+  padding-bottom: 1.5em !important;
+}
