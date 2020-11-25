@@ -1,6 +1,82 @@
-.mainContent {
+/* #title {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
   margin-bottom: 10px;
+} */
+
+/* body {
+  text-align: center;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Heebo&display=swap");
+* {
+  font-family: "Heebo", sans-serif;
+}
+
+.big-heading {
+  font-weight: 900;
+  font-size: 3.5rem;
+}
+
+#big-heading-description {
+  padding-bottom: 2em;
+  font-size: 1.2rem;
+  color: #f7f7f7;
+}
+
+.color {
+  /* color: white; */
+  background-color: #ff5757;
+}
+
+.styledBtn {
+  background-color: white !important;
+  border-color: white !important;
+  color: #2e2e2e !important;
+  font-size: x-large !important;
+  font-weight: 600 !important;
+  border-radius: 2em !important;
+  padding: 0.2em 3em 0.2em 3em !important;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.13);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.13);
+}
+
+#title {
+  padding: 3% 15% 3% 15%;
+}
+
+#features {
+  /* background-color: hotpink; */
+  padding: 3% 15% 7% 15%;
+}
+
+#stack {
+  padding: 0 15% 7%;
+}
+
+.featureTitle {
+  padding-bottom: 0.5em;
+  font-weight: 900;
+}
+
+.borderItem {
+  border-left: 3px solid #ff5757;
+  padding-left: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+#source {
+  padding: 0 15% 7%;
+}
+
+.sectionTitle {
+  font-size: 2em;
+  font-weight: 900;
+}
+
+.sectionSubtitle {
+  font-size: 1.2em;
+  font-weight: 900;
 }

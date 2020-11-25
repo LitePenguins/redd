@@ -1,5 +1,4 @@
 import praw
-import pprint
 
 import os
 import json
@@ -8,15 +7,17 @@ from datetime import datetime
 
 from flask import Flask, render_template, request, jsonify, redirect
 from flask_cors import CORS
-from PIL import Image
-from configparser import SafeConfigParser
+
+# from PIL import Image
+from configparser import ConfigParser
 
 
 app = Flask(__name__)
 CORS(app)
-parser = SafeConfigParser()
+parser = ConfigParser()
 parser.read("config.ini")
 
+print("creating reddit instance")
 reddit = praw.Reddit(
     client_id=parser.get("config", "client_id"),
     client_secret=parser.get("config", "client_secret"),
@@ -33,9 +34,35 @@ def post_test():
 
 @app.route("/login", methods=["GET"])
 def login():
+    global reddit
     # print(request.args)
     # print(request.args["code"])
-    print(reddit.auth.authorize(request.args["code"]))
+
+    print(request)
+    print("login route")
+    print("request args code: " + request.args["code"])
+    # print("refresh token if any: " + str(reddit.auth.authorize(request.args["code"])))
+
+    # reddit.set_access_credentials(
+    #     request.args["code"], reddit.auth.authorize(request.args["code"])
+    # )
+
+    reddit = praw.Reddit(
+        client_id=parser.get("config", "client_id"),
+        client_secret=parser.get("config", "client_secret"),
+        redirect_uri="http://localhost:9874/login",
+        user_agent="testscript",
+    )
+    reddit.auth.authorize(request.args["code"])
+
+    # reddit = praw.Reddit(
+    #     client_id=parser.get("config", "client_id"),
+    #     client_secret=parser.get("config", "client_secret"),
+    #     refresh_token=test,
+    #     user_agent="testscript",
+    # )
+    # reddit.auth.authorize(request.args["code"])
+    print(reddit.user.me())
     return redirect("http://localhost:3000/dashboard", code=302)
 
 
@@ -50,13 +77,13 @@ def delete_saved_data():
 
 @app.route("/saved", methods=["GET"])
 def retrieve_saved_data():
-
+    print(reddit.user.me())
     saved_info = []  # to be json'd
     subreddits = []
     count = 0
     # links = []
 
-    for item in reddit.user.me().saved(limit=100):
+    for item in reddit.user.me().saved(limit=None):
         print(str(count) + ": ", end="")
         print(type(item))
 
@@ -102,16 +129,16 @@ def retrieve_saved_data():
                 print("no title")
 
             # author
-            print("Author: " + str(item.author))
+            # print("Author: " + str(item.author))
             dict["author"] = str(item.author)
 
             # date
-            print(
-                "Date: "
-                + datetime.utcfromtimestamp(item.created_utc).strftime(
-                    "%Y-%m-%d %H:%M:%S"
-                )
-            )
+            # print(
+            #     "Date: "
+            #     + datetime.utcfromtimestamp(item.created_utc).strftime(
+            #         "%Y-%m-%d %H:%M:%S"
+            #     )
+            # )
             dict["date"] = datetime.utcfromtimestamp(item.created_utc).strftime(
                 "%Y-%m-%d %H:%M:%S"
             )
@@ -132,12 +159,12 @@ def retrieve_saved_data():
                 if not str(item.subreddit) in subreddits:
                     subreddits.append(str(item.subreddit))
 
-                print("Subreddit: " + str(item.subreddit))
+                # print("Subreddit: " + str(item.subreddit))
                 dict["subreddit"] = str(item.subreddit)
             except:
                 print("no sub")
 
-            print(dict)
+            # print(dict)
             saved_info.append(dict)
 
         # check if comment

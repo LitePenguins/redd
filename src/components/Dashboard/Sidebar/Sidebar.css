@@ -7,11 +7,16 @@
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
-  background-color: rgb(233, 230, 230);
+  background-color: #ebebeb;
 }
 
 #submitFilterButton,
 #exportItemsButton {
   display: flex;
   float: left;
+}
+
+#brand {
+  font-weight: 900;
+  color: #2e2e2e !important;
 }
