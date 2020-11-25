@@ -14,19 +14,22 @@ const ImageCard = (props) => {
   const [display, setDisplay] = useState(false);
 
   const deleteItem = () => {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: props.data.id }),
-    };
+    // const options = {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ id: props.data.id }),
+    // };
 
-    fetch("/delete", options).then((res) => {
-      console.log(res);
-      props.onDelete(props.data.id);
-      closeModal();
-    });
+    // fetch("http://localhost:9874/delete", options).then((res) => {
+    //   console.log(res);
+    //   props.onDelete(props.data.id);
+    //   closeModal();
+    // });
+
+    props.onDelete(props.data.id);
+    closeModal();
   };
 
   const closeModal = () => {
@@ -64,7 +67,7 @@ const ImageCard = (props) => {
       body: JSON.stringify({ title: props.data.title, id: props.data.id }),
     };
 
-    fetch("/add", options).then((res) => {
+    fetch("localhost:1234/add", options).then((res) => {
       console.log(res);
     });
   };

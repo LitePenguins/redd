@@ -26,6 +26,7 @@ const TextContainer = (props) => {
     <div>
       {undefined !== props.links && props.links.length === 0 ? null : (
         <h1
+          id="textContainerTitle"
           style={{
             display:
               undefined !== props.links && props.links.length === 0
@@ -41,12 +42,13 @@ const TextContainer = (props) => {
 
       <section
         id="textSection"
-        style={{
-          display:
-            undefined !== props.links && props.links.length === 0
-              ? "none"
-              : "block",
-        }}
+        //TODO: fix for hiding title block
+        // style={{
+        //   display:
+        //     undefined !== props.links && props.links.length === 0
+        //       ? "none"
+        //       : "block",
+        // }}
       >
         {
           <div className="card-columns text">

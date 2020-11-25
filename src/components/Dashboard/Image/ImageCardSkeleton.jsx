@@ -11,7 +11,7 @@ const ImageCardSkeleton = () => {
         {/* <Card.Img variant="top">
           <Skeleton height={28} width={300} />
         </Card.Img> */}
-        <Skeleton height={600} width={350} />
+        <Skeleton height={300} />
         <Card.Body className="d-flex flex-column">
           <Card.Title className="mt-auto">
             <Skeleton />

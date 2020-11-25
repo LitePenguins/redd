@@ -52,7 +52,9 @@ const Sidebar = (props) => {
 
   return (
     <div className="sidebar">
-      <h1 style={{ padding: "1em", textAlign: "center" }}>Redd</h1>
+      <h1 id="brand" style={{ padding: "1em", textAlign: "center" }}>
+        Redd
+      </h1>
 
       <section id="formSection">
         <Form id="filtersForm" onSubmit={selectItem}>
