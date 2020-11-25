@@ -8,6 +8,7 @@
 * Export saved data to computer in .csv format
 * Download images locally (currently broken due to CORS limitations)
 * Upload saved data to a mongoDB server (disabled for public)
+* Python backend using PRAW, with a custom REST api to communicate to front end
 
 ## Requirements
 * [npm](https://nodejs.org/en/)
