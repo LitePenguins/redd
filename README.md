@@ -45,6 +45,12 @@ cd Server
 python server.py
 ```
 
+## Screenshots
+![mainDashboard1](https://i.imgur.com/6iH69iO.png)
+![mainDashboard2](https://i.imgur.com/E6BYnNV.png)
+![homescreen](https://i.imgur.com/Y76T9Lf.png)
+
+
 ## Stack 
 ### Front-End
 - JavaScript
@@ -64,3 +70,5 @@ python server.py
 - Flask
 - Flask-CORS
 - configparser
+
+
